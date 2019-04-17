@@ -16,7 +16,7 @@ require("dotenv").config();
 
 const mongoose = require("mongoose");
 
-mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true})
+mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true, useFindAndModify: false})
 .catch((err) => console.log(err));
 
 const Schema = mongoose.Schema;
@@ -269,7 +269,11 @@ var removeById = function(personId, done) {
 var removeManyPeople = function(done) {
   var nameToRemove = "Mary";
 
-  done(null/*, data*/);
+  Person.remove({name: nameToRemove}, (err, result) => {
+    if(err) return done(err);
+    done(null, result);
+  })
+
 };
 
 /** # C[R]UD part V -  More about Queries # 
