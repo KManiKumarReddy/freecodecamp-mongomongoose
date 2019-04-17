@@ -93,9 +93,11 @@ var Person = mongoose.model("Person", personSchema);
 // });
 
 var createAndSavePerson = function(done) {
-  
-  done(null /*, data*/);
-
+  let person = new Person({name:"Mani Kumar Reddy Kancharla", age: 22});
+  person.save((err, data) => {
+    if(err) return done(err);
+    done(null, data);
+  });
 };
 
 /** 4) Create many People with `Model.create()` */
