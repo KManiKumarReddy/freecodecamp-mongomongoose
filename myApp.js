@@ -302,7 +302,6 @@ var queryChain = function(done) {
     done(null, result);
   });
   
-  done(null/*, data*/);
 };
 
 /** **Well Done !!**
