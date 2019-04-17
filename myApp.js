@@ -148,7 +148,10 @@ var findPeopleByName = function(personName, done) {
 
 var findOneByFood = function(food, done) {
 
-  done(null/*, data*/);
+  Person.findOne({favoriteFoods: {$all: food}}, (err, data) => {
+    if(err) return done(err);
+    done(null, data);
+  });
   
 };
 
