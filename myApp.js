@@ -249,7 +249,7 @@ var findAndUpdate = function(personName, done) {
 
 var removeById = function(personId, done) {
   
-  Person.findByIdAndRemove(personId, {age: ageToSet}, (err, data) => {
+  Person.findByIdAndRemove(personId, (err, data) => {
     if(err) return done(err);
     done(null,data);
   });
